@@ -10,14 +10,6 @@
       <Button type="error" size="large" style="margin-left:2em;">
         <a href="https://github.com/fuyi501/web-video-live/issues">ISSUES</a>
       </Button>
-      <!-- Place this tag where you want the button to render. -->
-      <!-- <github-button
-        href="https://github.com/fuyi501/web-video-live"
-        data-icon="octicon-star"
-        data-size="large"
-        aria-label="Star fuyi501/web-video-live on GitHub">
-        Star
-      </github-button> -->
     </div>
     <div class="example-title"> # vue-video-player 播放 RTMP 流 </div>
     <Row type="flex" justify="center" :gutter="20">
@@ -43,10 +35,23 @@
     <div class="example-title"> # flv.js 播放 flv 视频流 </div>
     <Row type="flex" justify="center">
       <Col :span="18">
-        <Flvjs></Flvjs>
+        <Flv></Flv>
       </Col>
     </Row>
-    <div class="example-title"></div>
+    <div class="example-title"> # flv.js 播放 http-flv 视频流并截图</div>
+    <Button type="primary" size="large" style="margin:0 0 2em;" @click="captureImg">截图</Button>
+    <Row type="flex" justify="center" :gutter="40" style="margin-bottom:6em;">
+      <Col :span="9">
+        <!-- 网上没有可以用的 http-flv 视频流，所以这里用 flv 代替 -->
+        <HttpFlv src="http://yunxianchang.live.ujne7.com/vod-system-bj/TLaf2cc9d469939803949187b46da16c45.flv"></HttpFlv>
+      </Col>
+      <Col :span="9">
+        <div style="width:0px;height:0px;overflow:hidden;">
+          <canvas id="canvas" width="515" height="300"></canvas>
+        </div>
+        <img :src="imgSrc" style="margin-top:5px;"/>
+      </Col>
+    </Row>
   </div>
 </template>
 
@@ -54,7 +59,8 @@
 import GithubButton from 'vue-github-button'
 import RtmpLive from "@/components/RtmpLive.vue";
 import HlsLive from "@/components/HlsLive.vue";
-import Flvjs from "@/components/flvjs.vue";
+import Flv from "@/components/flv.vue";
+import HttpFlv from "@/components/httpFlv.vue";
 
 export default {
   name: "home",
@@ -62,7 +68,8 @@ export default {
     GithubButton,
     RtmpLive,
     HlsLive,
-    Flvjs
+    Flv,
+    HttpFlv
   },
   data () {
     return {
@@ -73,7 +80,25 @@ export default {
         { title: '香港财经', videoSrc: 'rtmp://202.69.69.180:443/webcast/bshdlive-pc'},
         { title: '湖南卫视', videoSrc: 'rtmp://58.200.131.2:1935/livetv/hunantv'},
         { title: '美国中文电视', videoSrc: 'rtmp://media3.sinovision.net:1935/live/livestream'}
-      ]
+      ],
+      imgSrc: '', // 图片路径
+      canvas: '',
+      context: '',
+      videoTag: ''
+    }
+  },
+  mounted () {
+    this.videoTag = document.getElementById('videoElement2')
+    this.canvas = document.getElementById('canvas')
+    this.context = this.canvas.getContext('2d')
+    console.log('加载数据：', this.videoTag, this.canvas, this.context)
+  },
+  methods: {
+    captureImg () {
+      this.context.drawImage(this.videoTag, 0, 0, 515, 300)
+      let base64 = this.canvas.toDataURL('image/jpeg')
+      console.log('base64:', base64)
+      this.imgSrc = base64
     }
   }
 };

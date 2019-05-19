@@ -1,5 +1,5 @@
 <template>
-  <video id="videoElement" style="background-color:#fff;height:600px;width:100%;"></video>
+  <video id="videoElement2" style="background-color:#fff;height:300px;width:100%;"></video>
 </template>
 
 <script>
@@ -19,13 +19,14 @@ export default {
     }
   },
   mounted () {
-    let that = this
+    let flvSrc = this.src
+    console.log('flvSrc:', flvSrc)
     if (flvjs.isSupported()) {
-      var videoElement = document.getElementById('videoElement')
+      var videoElement = document.getElementById('videoElement2')
       var flvPlayer = flvjs.createPlayer({
         type: 'flv',
-        url: 'http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.flv'
-        // url: that.src
+        // url: 'http://yunxianchang.live.ujne7.com/vod-system-bj/TLaf2cc9d469939803949187b46da16c45.flv'
+        url: flvSrc
       })
       flvPlayer.attachMediaElement(videoElement)
       flvPlayer.load()
