@@ -10,7 +10,7 @@
 <script>
 import 'videojs-flash'
 export default {
-  name: 'rtmp-live', // 不能使用 video 命名
+  name: 'rtmp-live',
   props: {
     src: {
       type: String,

@@ -10,7 +10,7 @@
 import 'videojs-contrib-hls'
 
 export default {
-  name: 'hls-live', // 不能使用 video 命名
+  name: 'hls-live',
   props: {
     src: {
       type: String,

@@ -1,7 +1,5 @@
 # web 播放视频流/直播
 
-放弃了之前使用 [D2Admin](https://github.com/d2-projects/d2-admin) 开发的版本，原因是代码太乱了，重新使用 vue-cli 改了一版。
-
 在 H5 上播放视频流，有很多开源的播放器可以使用，比如：
 
 1. [flv.js](https://github.com/bilibili/flv.js)（B站开源）使用纯JavaScript而不使用Flash编写的HTML5 Flash视频（FLV）播放器。
@@ -18,7 +16,11 @@
 
 ## 展示效果
 
-http://live.fuwenwei.com
+在一个做视频监控的项目中使用了 flv.js ，效果如下：
+
+![](http://img.fuwenwei.com/blog/20190718220244.jpg)
+
+![](http://img.fuwenwei.com/blog/20190718220732.png)
 
 ## 可用的视频流
 

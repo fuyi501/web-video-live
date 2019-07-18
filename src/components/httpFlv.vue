@@ -6,7 +6,7 @@
 import flvjs from 'flv.js'
 
 export default {
-  name: 'flvjs', // 不能使用 video 命名
+  name: 'httpflv',
   props: {
     src: {
       type: String,
