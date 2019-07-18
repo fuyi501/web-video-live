@@ -18,9 +18,9 @@
 
 在一个做视频监控的项目中使用了 flv.js ，效果如下：
 
-![](http://img.fuwenwei.com/blog/20190718220244.jpg)
+![](http://img.fuwenwei.com/blog/20190718221626.jpg)
 
-![](http://img.fuwenwei.com/blog/20190718220732.png)
+![](http://img.fuwenwei.com/blog/20190718221620.jpg)
 
 ## 可用的视频流
 
